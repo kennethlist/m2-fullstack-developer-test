@@ -84,6 +84,12 @@
         }
     ],
     "extra": {
-        "magento-force": "override"
+        "magento-force": "override",
+        "composer-exit-on-patch-failure": true,
+        "patches": {
+            "magento/module-catalog": {
+                "Example usage of a composer patch to add The Movie DB copyright notice": "patches/composer/frontend_pdp_themoviedb_copyright.patch"
+            }
+        }
     }
 }

@@ -1,0 +1,20 @@
+diff --git a/view/frontend/layout/catalog_product_view.xml b/view/frontend/layout/catalog_product_view.xml
+index 6e24f84..57afda4 100644
+--- a/view/frontend/layout/catalog_product_view.xml
++++ b/view/frontend/layout/catalog_product_view.xml
+@@ -37,6 +37,8 @@
+ 
+         <referenceContainer name="content">
+             <container name="product.info.main" htmlTag="div" htmlClass="product-info-main" before="-">
++                <block class="Magento\Framework\View\Element\Template" name="moviedb.copyright" template="Magento_Catalog::product/view/moviedb_copyright.phtml" after="page.main.title">
++                </block>
+                 <container name="product.info.price" label="Product info auxiliary container" htmlTag="div" htmlClass="product-info-price">
+                     <container name="product.info.stock.sku" label="Product auxiliary info" htmlTag="div" htmlClass="product-info-stock-sku">
+                         <container name="product.info.type" before="-"/>
+diff --git a/view/frontend/templates/product/view/moviedb_copyright.phtml b/view/frontend/templates/product/view/moviedb_copyright.phtml
+new file mode 100644
+index 0000000..33ffe2a
+--- /dev/null
++++ b/view/frontend/templates/product/view/moviedb_copyright.phtml
+@@ -0,0 +1 @@
++<p><?=$escaper->escapeHtml(__('(Details provided by The Movie DB)')) ?></p>
