@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="cadence" translate="label" sortOrder="999">
+            <label>Cadence</label>
+        </tab>
+        <section id="themoviedb" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+            <label>TMDB</label>
+            <tab>cadence</tab>
+            <resource>Cadence_Movie::config_cadence_movie</resource>
+            <group id="general" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                <label>General</label>
+                <field id="api_key" type="textarea" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                    <label>API Key</label>
+                    <comment/>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
