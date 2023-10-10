@@ -1,0 +1,18 @@
+<?php
+/** @var $block \Magento\Catalog\Block\Product\View */
+/** @var $viewModel \Cadence\Movie\ViewModel\MovieAttributes */
+?>
+ 
+<?php
+    $product = $block->getProduct();
+    $viewModel = $block->getData('view_model');
+    $attributeCodes = [
+        'genre',
+    ];
+?>
+
+<div class="movie-genre">
+    <?php foreach ($viewModel->getAttributes($product, $attributeCodes) as $attribute): ?>
+        <p><?= $escaper->escapeHtml($attribute['value']) ?></p>
+    <?php endforeach ?>
+</div>

@@ -1,0 +1,30 @@
+<?php
+/** @var $block \Magento\Catalog\Block\Product\View */
+/** @var $viewModel \Cadence\Movie\ViewModel\MovieAttributes */
+?>
+ 
+<?php
+    $product = $block->getProduct();
+    $viewModel = $block->getData('view_model');
+
+    $rating = null;
+    $attributeValues = $viewModel->getAttributes($product, ['vote_average']);
+    if (count($attributeValues)) {
+        $rating = ((float)end($attributeValues)['value'] / 10.0) * 100;
+    }
+?>
+
+<?php if ($rating !== null): ?>
+    <div class="product-reviews-summary" itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+        <div class="rating-summary">
+            <span class="label"><span><?= $escaper->escapeHtml(__('Rating:')) ?></span></span>
+            <div class="rating-result" title="<?= $escaper->escapeHtmlAttr($rating) ?>%">
+                <span style="width: <?= $escaper->escapeHtmlAttr($rating) ?>%;">
+                    <span>
+                        <span itemprop="ratingValue"><?= $escaper->escapeHtml($rating) ?> </span>% <?= $escaper->escapeHtml(__('of')) ?> <span itemprop="bestRating">100</span>
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+<?php endif ?>

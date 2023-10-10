@@ -1,0 +1,24 @@
+<?php
+/** @var $block \Magento\Catalog\Block\Product\View */
+/** @var $viewModel \Cadence\Movie\ViewModel\MovieAttributes */
+?>
+ 
+<?php
+    $product = $block->getProduct();
+    $viewModel = $block->getData('view_model');
+    $attributeCodes = [
+        'director',
+        'producer',
+        'actors',
+    ];
+?>
+
+<div class="movie-attributes">
+    <?php if ($product->getDescription()): ?>
+        <p><?=$escaper->escapeHtml($product->getDescription())?></p>
+    <?php endif ?>
+
+    <?php foreach ($viewModel->getAttributes($product, $attributeCodes) as $attribute): ?>
+        <p><strong><?= $escaper->escapeHtml($attribute['label']) ?>:</strong> <?= $escaper->escapeHtml($attribute['value']) ?></p>
+    <?php endforeach ?>
+</div>

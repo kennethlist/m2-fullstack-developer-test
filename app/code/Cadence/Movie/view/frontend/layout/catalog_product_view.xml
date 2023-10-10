@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="product.info.main">
+            <block class="Magento\Catalog\Block\Product\View" name="category.product.movie.genre" template="Cadence_Movie::movie_genre.phtml" before="product.info.price">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Cadence\Movie\ViewModel\MovieAttributes</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Catalog\Block\Product\View" name="category.product.movie.rating" template="Cadence_Movie::movie_rating.phtml" after="category.product.movie.genre">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Cadence\Movie\ViewModel\MovieAttributes</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Catalog\Block\Product\View" name="category.product.movie.attributes" template="Cadence_Movie::movie_attributes.phtml" after="product.info.price">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Cadence\Movie\ViewModel\MovieAttributes</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <referenceBlock name="product.info.addtocart">
+            <block name="product.info.view.trailer" class="Magento\Catalog\Block\Product\View" template="Cadence_Movie::view_trailer_button.phtml" before="-" />
+        </referenceBlock>
+
+        <referenceBlock name="page.main.title" class="Cadence\Movie\Block\Html\Title">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Cadence_Movie::product/view/title.phtml</argument>
+            </action>
+        </referenceBlock>
+
+        <referenceBlock name="product.info.stock.sku" remove="true"/>
+
+        <!-- @FIXME disable unused features in the admin rather than removing here -->
+        <referenceBlock name="product.info.review" remove="true"/>
+        <referenceBlock name="product.attributes" remove="true" />
+        <referenceBlock name="product.info.description" remove="true" />
+        <referenceBlock name="reviews.tab" remove="true" />
+        <referenceBlock name="product.info.social" remove="true" />
+        
+    </body>
+</page>
